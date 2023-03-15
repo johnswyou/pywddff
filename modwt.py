@@ -1,4 +1,4 @@
-# import pywt
+# import pywt # OLD
 from filters import wavelet_filter, scaling_filter
 import numpy as np
 import math
@@ -13,13 +13,14 @@ def modwt(x, filter, J, remove_bc = True, max_L = None, max_J = None):
     if not isinstance(x, np.ndarray):
         raise TypeError('x should be a 1D Numpy array')
 
-    # Get MODWT wavelet and scaling filters
+    # Get MODWT wavelet and scaling filters (OLD)
     # wavelet = pywt.Wavelet(filter)
     # h = wavelet.dec_hi # wavelet filter
     # g = wavelet.dec_lo # scaling filter
     # h_t = np.array(h) / np.sqrt(2) # MODWT re-scaled h
     # g_t = np.array(g) / np.sqrt(2) # MODWT re-scaled g
 
+    # Get MODWT wavelet and scaling filters
     h_t = wavelet_filter(filter, modwt=True)
     g_t = scaling_filter(filter, modwt=True)
 
