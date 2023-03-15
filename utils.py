@@ -16,9 +16,9 @@ def insert_zeros_between(x, j):
     new_x[::j+1] = x
     return new_x
 
-# Reference: https://stackoverflow.com/questions/35474078/python-1d-array-circular-convolution
 def circ_conv(signal, ker):
     '''
+        Reference: https://stackoverflow.com/questions/35474078/python-1d-array-circular-convolution
         signal: real 1D array
         ker: real 1D array
         signal and ker must have same shape
