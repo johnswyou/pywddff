@@ -13,17 +13,7 @@ def scaling_coefs(x, filter, j, remove_bc = True, max_L = None, max_J = None):
 
     # Handling boundary coefficients
     if remove_bc:
-
-        g = scaling_filter(filter)
-        L = g.shape[0]
-
-        if max_L is None:
-            max_L = L
-
-        if max_J is None:
-            max_J = j
-
-        num_bc = (2**max_J - 1) * (max_L - 1)
+        num_bc = n_boundary_coefs(filter, j, max_L, max_J)
         scaling_coef = scaling_coef[num_bc:]
 
     return scaling_coef
@@ -39,17 +29,21 @@ def wavelet_coefs(x, filter, j, remove_bc = True, max_L = None, max_J = None):
 
     # Handling boundary coefficients
     if remove_bc:
-
-        g = scaling_filter(filter)
-        L = g.shape[0]
-
-        if max_L is None:
-            max_L = L
-
-        if max_J is None:
-            max_J = j
-
-        num_bc = (2**max_J - 1) * (max_L - 1)
+        num_bc = n_boundary_coefs(filter, j, max_L, max_J)
         wavelet_coef = wavelet_coef[num_bc:]
 
     return wavelet_coef
+
+def n_boundary_coefs(filter, j, max_L=None, max_J=None):
+
+    if max_L is None:
+        g = scaling_filter(filter)
+        L = g.shape[0]
+        max_L = L
+
+    if max_J is None:
+        max_J = j
+
+    num_bc = (2**max_J - 1) * (max_L - 1)
+
+    return num_bc
