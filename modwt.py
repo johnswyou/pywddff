@@ -2,14 +2,14 @@
 from filters import wavelet_filter, scaling_filter
 import numpy as np
 import math
-import pandas as pd
-from coefs import n_boundary_coefs
 
 def modwt(x, filter, J, remove_bc = True, max_L = None, max_J = None):
 
     # Input validation
     if not isinstance(x, np.ndarray):
         raise TypeError('x should be a 1D Numpy array')
+    
+    assert len(x.shape) == 1
 
     # Get MODWT wavelet and scaling filters (OLD)
     # wavelet = pywt.Wavelet(filter)
@@ -76,45 +76,3 @@ def modwt(x, filter, J, remove_bc = True, max_L = None, max_J = None):
         WV_J = WV_J[num_bc:, :]
 
     return WV_J
-
-def make_output_names(n_inputs, j):
-    orig_input_names = ["X" + str(i) for i in range(1, n_inputs+1)]
-    wavelet_names = ["W" + str(i) for i in range(1, j+1)]
-    scaling_name = "V" + str(j)
-    wavelet_names.append(scaling_name)
-    return [i + "_" + j for i in orig_input_names for j in wavelet_names]
-
-def multi_modwt(X, y=None, filter="db1", J=1, pandas_output = False, **kwargs):
-
-    '''
-    X is a 2D numpy array
-    filter is a string
-    J is an integer
-    **kwargs are further arguments to be passed to modwt()
-    '''
-    
-    assert len(X.shape) > 1
-    assert X.shape[1] > 0
-    assert X.shape[0] > X.shape[1]
-
-    n_inputs = X.shape[1]
-
-    out = np.apply_along_axis(modwt, 0, X, filter, J, **kwargs)
-    out = np.split(out, n_inputs, 2)
-    out = [i.squeeze() for i in out]
-    out = np.concatenate(out, axis=1)
-
-    if pandas_output:
-        out = pd.DataFrame(out, columns=make_output_names(n_inputs, J))
-
-    if y is not None:
-        assert isinstance(y, np.ndarray)
-        assert len(y.shape) == 1
-        num_bc = n_boundary_coefs(filter, J, **kwargs)
-        y = y[num_bc:]
-        assert out.shape[0] == y.shape[0]
-        if pandas_output:
-            y = pd.Series(y, name="y")
-        return out, y
-    else:
-        return out

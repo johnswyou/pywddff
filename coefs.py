@@ -47,3 +47,10 @@ def n_boundary_coefs(filter, j, max_L=None, max_J=None):
     num_bc = (2**max_J - 1) * (max_L - 1)
 
     return num_bc
+
+def make_output_names(n_inputs, j):
+    orig_input_names = ["X" + str(i) for i in range(1, n_inputs+1)]
+    wavelet_names = ["W" + str(i) for i in range(1, j+1)]
+    scaling_name = "V" + str(j)
+    wavelet_names.append(scaling_name)
+    return [i + "_" + j for i in orig_input_names for j in wavelet_names]
