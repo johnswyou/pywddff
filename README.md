@@ -1,4 +1,4 @@
-# ts_wavelets
+# pywddff
 
 Mini Python 3.x library to perform Maximal Overlap Discrete Wavelet Transform (MODWT) on time series data
 
@@ -7,7 +7,7 @@ Mini Python 3.x library to perform Maximal Overlap Discrete Wavelet Transform (M
 Presently, only MODWT is implemented via the `modwt` function.
 
 ``` python
-from ts_wavelets.modwt import modwt
+from pywddff.modwt import modwt
 import numpy as np
 
 n_observations = 1000
