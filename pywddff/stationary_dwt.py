@@ -194,11 +194,11 @@ def multi_stationary_dwt(X, y=None, transform = "modwt", filter="db1", J=1, pand
     **kwargs: Used to specify max_L, max_J for cutting off boundary coefficients.
     '''
     
-    assert len(X.shape) > 1
-    assert X.shape[1] > 0
-    assert X.shape[0] > X.shape[1]
+    assert len(X.shape) > 1 # X should be a 2D ndarray
+    assert X.shape[1] > 0 # X should have at least 1 column
+    assert X.shape[0] > X.shape[1] # X should have more rows than columns
 
-    n_inputs = X.shape[1]
+    n_inputs = X.shape[1] # Number of columns in X
 
     if transform == "modwt":
         out = np.apply_along_axis(modwt, 0, X, filter, J, remove_bc, **kwargs)
