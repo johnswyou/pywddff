@@ -44,6 +44,9 @@ def n_boundary_coefs(filter, j, max_L=None, max_J=None):
     if max_J is None:
         max_J = j
 
+    assert max_L >= L
+    assert max_J >= j
+
     num_bc = (2**max_J - 1) * (max_L - 1)
 
     return num_bc
