@@ -6,7 +6,7 @@ work with tabular data and machine learning models to forecast time series. `pyw
 1. Maximal Overlap Discrete Wavelet Transform (MODWT)
 2. A Trous Discrete Wavelet Transform
 
-We expect that the user is familiar with wavelet transforms (Discrete Wavelet Transform (DWT), MODWT, A Trous DWT, Multi-resolution Analysis, etc.)
+It is expected that the user is familiar with wavelet transforms (Discrete Wavelet Transform (DWT), MODWT, A Trous DWT, Multi-resolution Analysis, etc.)
 Although not strictly required, knowledge of wavelet transforms and related concepts will make reading everything that follows below, and using `pywddff`
 much easier. The gold standard reference textbook to learn about wavelet transforms is "Wavelet Methods for Time Series Analysis" by Percival and Walden (2000).
 
