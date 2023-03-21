@@ -188,10 +188,52 @@ def atrousdwt(x, filter, J, remove_bc = True, **kwargs):
 def multi_stationary_dwt(X, y=None, transform = "modwt", filter="db1", J=1, pandas_output = False, remove_bc=True, **kwargs):
 
     '''
-    X is a 2D numpy array
-    filter is a string
-    J is an integer
-    **kwargs: Used to specify max_L, max_J for cutting off boundary coefficients.
+    Perform either Maximal Overlap Discrete Wavelet Transform (MODWT) or A Trous DWT
+    on every column of a 2D numpy array.
+
+    Args:
+
+        X (np.ndarray): A 2D numpy array.
+        y (np.ndarray): A 1D numpy array.
+        transform (str): Either "modwt" or "atrousdwt" to specify the wavelet transform type.
+        filter (str): A string indicating the desired filter. There are 128 options, see the README on
+                      this package's github page to see the list of filters available.
+        J (int): Decomposition level.
+        pandas_output (bool): If True, the function will output a pandas data frame and (if the target was provided)
+                              a pandas series. Otherwise, the result(s) will be numpy arrays.
+        remove_bc (bool): Whether boundary coefficients should be removed. If True, boundary coefficients are
+                          removed. If False, boundary coefficients are not removed.
+        **kwargs: Used to specify max_L, max_J for cutting off boundary coefficients.
+        max_L (int): This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
+                     filter, L. When removing boundary coefficients, in the case that a user wants to use a max_L in ((2^max_J)-1)*(max_L - 1) 
+                     that does not equal L, the user can specify a value for max_L that is greater than L. Doing this is useful when doing comparison studies
+                     to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
+                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
+        max_J (int): This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
+                     When removing boundary coefficients, in the case that a user wants to use a max_J in ((2^max_J)-1)*(max_L - 1) that does not equal J, 
+                     the user can specify a value for max_J that is greater than J. Doing this is useful when doing comparison studies
+                     to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
+                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
+    
+    Returns:
+    
+        if y is provided:
+        
+        tuple: First element is a 2D array with (J+1)*X.shape[1] columns, the first J columns being the J wavelet coefficients and the last
+               column being the level J scaling coefficient corresponding to the first feature in X, the next J columns
+               being the J wavelet coefficients and the column after that being the scaling coefficient corresponding to the second
+               feature in X, and so on. If pandas_output = True, the output will be a pandas data frame.
+
+               Second element is a 1D array corresponding to the target y provided by the user (with boundary
+               coefficient elements removed if remove_bc = True.) If pandas_output = True, the output will be a 
+               pandas series.
+
+        if y is not provided:
+        
+        np.ndarray or pandas DataFrame: A 2D numpy array with (J+1)*X.shape[1] columns, the first J columns being the J wavelet coefficients and the last
+                                        column being the level J scaling coefficient corresponding to the first feature in X, the next J columns
+                                        being the J wavelet coefficients and the column after that being the scaling coefficient corresponding to the second
+                                        feature in X, and so on. If pandas_output = True, the output will be a pandas data frame.
     '''
     
     assert len(X.shape) > 1 # X should be a 2D ndarray
