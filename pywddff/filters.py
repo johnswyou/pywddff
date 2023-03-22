@@ -8,6 +8,18 @@ wavelet_dict = load_pickle('wavelet_dict.pkl')
 # Level 1 scaling and wavelet filters
 
 def scaling_filter(filter, modwt = False):
+    """
+    Level 1 scaling filter.
+
+    Args:
+
+        filter (str): A string indicating the desired filter. There are 128 options, see the README on
+                      this package's github page to see the list of filters available.
+        modwt (bool): If True, the level 1 scaling filter is divided by 2^(1/2).
+
+    Returns:
+        np.ndarray: A 1D numpy array.
+    """
     if modwt:
         return scaling_dict[filter] / np.sqrt(2)
     elif not modwt:
@@ -16,6 +28,18 @@ def scaling_filter(filter, modwt = False):
         raise TypeError
 
 def wavelet_filter(filter, modwt = False):
+    """
+    Level 1 wavelet filter.
+
+    Args:
+
+        filter (str): A string indicating the desired filter. There are 128 options, see the README on
+                      this package's github page to see the list of filters available.
+        modwt (bool): If True, the level 1 wavelet filter is divided by 2^(1/2).
+
+    Returns:
+        np.ndarray: A 1D numpy array.
+    """
     if modwt:
         return wavelet_dict[filter] / np.sqrt(2)
     elif not modwt:
@@ -26,10 +50,19 @@ def wavelet_filter(filter, modwt = False):
 # Level j scaling and wavelet filters
 
 def equiv_scaling_filter(filter, j):
-    '''filter is a string
-       j is an integer greater than 0
-       kwargs is to specify value of modwt (either modwt=True or modwt=False)
-    '''
+    """
+    Level j equivalent scaling filter.
+
+    Args:
+
+        filter (str): A string indicating the desired filter. There are 128 options, see the README on
+                      this package's github page to see the list of filters available.
+        j (int): Decomposition level.
+
+    Returns:
+        np.ndarray: A 1D numpy array of length (2^j -1)*(L-1)+1, where L is the length of the level 1 
+                    scaling/wavelet filter.
+    """
     prev_filter = scaling_filter(filter)
     running_filter = prev_filter.copy()
     for i in range(j-1):
@@ -38,19 +71,28 @@ def equiv_scaling_filter(filter, j):
         prev_filter = next_filter
     return running_filter
 
-def equiv_wavelet_filter(filter, j, **kwargs):
-    '''filter is a string
-       j is an integer greater than 0
-       kwargs is to specify value of modwt (either modwt=True or modwt=False)
-    '''
-    prev_filter = scaling_filter(filter, **kwargs)
+def equiv_wavelet_filter(filter, j):
+    """
+    Level j equivalent wavelet filter.
+
+    Args:
+
+        filter (str): A string indicating the desired filter. There are 128 options, see the README on
+                      this package's github page to see the list of filters available.
+        j (int): Decomposition level.
+
+    Returns:
+        np.ndarray: A 1D numpy array of length (2^j -1)*(L-1)+1, where L is the length of the level 1 
+                    scaling/wavelet filter.
+    """
+    prev_filter = scaling_filter(filter)
     running_filter = prev_filter.copy()
     for i in range(j-2):
         next_filter = insert_zeros_between(prev_filter, 1)
         running_filter = np.convolve(next_filter, running_filter)
         prev_filter = next_filter
     
-    prev_filter = wavelet_filter(filter, **kwargs)
+    prev_filter = wavelet_filter(filter)
     next_filter = insert_zeros_between(prev_filter, (2**(j-1))-1)
     running_filter = np.convolve(next_filter, running_filter)
     
