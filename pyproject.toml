@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "pywddff"
+version = "0.1.0"
+description = "Python package to perform feature engineering using wavelet transforms, geared towards those who work with tabular data and machine learning models to forecast time series."
+authors = ["John You"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

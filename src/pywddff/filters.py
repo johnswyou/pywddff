@@ -1,9 +1,10 @@
-from utils import load_pickle, insert_zeros_between
+from pywddff.utils import insert_zeros_between
+from pywddff.datasets import get_scaling_dict, get_wavelet_dict
 import numpy as np
 
 # Dictionaries containing scaling and wavelet filters, respectively
-scaling_dict = load_pickle('scaling_dict.pkl')
-wavelet_dict = load_pickle('wavelet_dict.pkl')
+scaling_dict = get_scaling_dict()
+wavelet_dict = get_wavelet_dict()
 
 # Level 1 scaling and wavelet filters
 

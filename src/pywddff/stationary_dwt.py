@@ -1,10 +1,9 @@
 # import pywt # OLD
-from filters import wavelet_filter, scaling_filter
-from coefs import scaling_coefs, n_boundary_coefs, make_output_names
+from pywddff.filters import wavelet_filter, scaling_filter
+from pywddff.coefs import scaling_coefs, n_boundary_coefs, make_output_names_from_list
 import numpy as np
 import pandas as pd
 import math
-from coefs import make_output_names_from_list
 
 def modwt(x, filter, J, remove_bc = True, **kwargs):
     """

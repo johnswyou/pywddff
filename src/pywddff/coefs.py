@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-from filters import equiv_scaling_filter, equiv_wavelet_filter, scaling_filter
-from utils import circ_conv
+from pywddff.filters import equiv_scaling_filter, equiv_wavelet_filter, scaling_filter
+from pywddff.utils import circ_conv
 
 def scaling_coefs(x, filter, j, remove_bc = True, **kwargs):
     """
