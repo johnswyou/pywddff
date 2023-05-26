@@ -2,10 +2,6 @@ from pywddff.utils import insert_zeros_between
 from pywddff.datasets import get_scaling_dict, get_wavelet_dict
 import numpy as np
 
-# Dictionaries containing scaling and wavelet filters, respectively
-scaling_dict = get_scaling_dict()
-wavelet_dict = get_wavelet_dict()
-
 # Level 1 scaling and wavelet filters
 
 def scaling_filter(filter, modwt = False):
@@ -21,6 +17,7 @@ def scaling_filter(filter, modwt = False):
     Returns:
         np.ndarray: A 1D numpy array.
     """
+    scaling_dict = get_scaling_dict()
     if modwt:
         return scaling_dict[filter] / np.sqrt(2)
     elif not modwt:
@@ -41,6 +38,7 @@ def wavelet_filter(filter, modwt = False):
     Returns:
         np.ndarray: A 1D numpy array.
     """
+    wavelet_dict = get_wavelet_dict()
     if modwt:
         return wavelet_dict[filter] / np.sqrt(2)
     elif not modwt:
@@ -61,7 +59,8 @@ def equiv_scaling_filter(filter, j):
         j (int): Decomposition level.
 
     Returns:
-        np.ndarray: A 1D numpy array of length (2^j -1)*(L-1)+1, where L is the length of the level 1 
+        np.ndarray: 
+                    A 1D numpy array of length (2^j -1)*(L-1)+1, where L is the length of the level 1 
                     scaling/wavelet filter.
     """
     prev_filter = scaling_filter(filter)
@@ -83,7 +82,8 @@ def equiv_wavelet_filter(filter, j):
         j (int): Decomposition level.
 
     Returns:
-        np.ndarray: A 1D numpy array of length (2^j -1)*(L-1)+1, where L is the length of the level 1 
+        np.ndarray: 
+                    A 1D numpy array of length (2^j -1)*(L-1)+1, where L is the length of the level 1 
                     scaling/wavelet filter.
     """
     prev_filter = scaling_filter(filter)

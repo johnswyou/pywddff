@@ -8,7 +8,7 @@ import math
 def modwt(x, filter, J, remove_bc = True, **kwargs):
     """
     Perform Maximal Overlap Discrete Wavelet Transform (MODWT)
-    on a 1D numpy array x.
+    on a 1D numpy array.
 
     Args:
         x (np.ndarray): A 1D numpy array.
@@ -17,20 +17,23 @@ def modwt(x, filter, J, remove_bc = True, **kwargs):
         J (int): Decomposition level.
         remove_bc (bool): If True, the first ((2^max_J)-1)*(max_L - 1) rows of the output are removed.
         **kwargs: Used to specify max_L, max_J for cutting off boundary coefficients.
-        max_L (int): This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
+        max_L (int): It is unlikely that this argument will be needed by most users.
+                     This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
                      filter, L. When removing boundary coefficients, in the case that a user wants to use a max_L in ((2^max_J)-1)*(max_L - 1) 
                      that does not equal L, the user can specify a value for max_L that is greater than L. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
-        max_J (int): This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
+                     that are removed across the different configurations.
+        max_J (int): It is unlikely that this argument will be needed by most users.
+                     This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
                      When removing boundary coefficients, in the case that a user wants to use a max_J in ((2^max_J)-1)*(max_L - 1) that does not equal J, 
                      the user can specify a value for max_J that is greater than J. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
+                     that are removed across the different configurations.
 
     Returns:
-        np.ndarray: A 2D array with (J+1) columns, the first J columns being the J wavelet coefficients and the last
-                    column being the level J scaling coefficient.
+        np.ndarray: 
+            A 2D array with (J+1) columns, the first J columns being the J wavelet coefficients and the last
+            column being the level J scaling coefficient.
     """
 
     # -----------------
@@ -111,7 +114,7 @@ def modwt(x, filter, J, remove_bc = True, **kwargs):
 def atrousdwt(x, filter, J, remove_bc = True, **kwargs):
     """
     Perform A Trous Discrete Wavelet Transform
-    on a 1D numpy array x.
+    on a 1D numpy array.
 
     Args:
         x (np.ndarray): A 1D numpy array.
@@ -120,20 +123,23 @@ def atrousdwt(x, filter, J, remove_bc = True, **kwargs):
         J (int): Decomposition level.
         remove_bc (bool): If True, the first ((2^max_J)-1)*(max_L - 1) rows of the output are removed.
         **kwargs: Used to specify max_L, max_J for cutting off boundary coefficients.
-        max_L (int): This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
+        max_L (int): It is unlikely that this argument will be needed by most users.
+                     This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
                      filter, L. When removing boundary coefficients, in the case that a user wants to use a max_L in ((2^max_J)-1)*(max_L - 1) 
                      that does not equal L, the user can specify a value for max_L that is greater than L. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
-        max_J (int): This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
+                     that are removed across the different configurations.
+        max_J (int): It is unlikely that this argument will be needed by most users.
+                     This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
                      When removing boundary coefficients, in the case that a user wants to use a max_J in ((2^max_J)-1)*(max_L - 1) that does not equal J, 
                      the user can specify a value for max_J that is greater than J. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
+                     that are removed across the different configurations.
 
     Returns:
-        np.ndarray: A 2D array with (J+1) columns, the first J columns being the J wavelet coefficients and the last
-                    column being the level J scaling coefficient.
+        np.ndarray: 
+            A 2D array with (J+1) columns, the first J columns being the J wavelet coefficients and the last
+            column being the level J scaling coefficient.
     """
 
     # ----------------
@@ -203,36 +209,40 @@ def multi_stationary_dwt(X, y=None, transform = "modwt", filter="db1", J=1, remo
                           removed. If False, boundary coefficients are not removed.
         approach (str): The wavelet-based forecasting approach. Currently, only single and single hybrid are supported.
         **kwargs: Used to specify max_L, max_J for cutting off boundary coefficients.
-        max_L (int): This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
+        max_L (int): It is unlikely that this argument will be needed by most users.
+                     This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
                      filter, L. When removing boundary coefficients, in the case that a user wants to use a max_L in ((2^max_J)-1)*(max_L - 1) 
                      that does not equal L, the user can specify a value for max_L that is greater than L. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
-        max_J (int): This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
+                     that are removed across the different configurations.
+        max_J (int): It is unlikely that this argument will be needed by most users.
+                     This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
                      When removing boundary coefficients, in the case that a user wants to use a max_J in ((2^max_J)-1)*(max_L - 1) that does not equal J, 
                      the user can specify a value for max_J that is greater than J. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
+                     that are removed across the different configurations.
     
     Returns:
-
+        tuple or np.ndarray or pandas DataFrame:
         if y is provided:
+            Return type is tuple.
         
-        tuple: First element is a 2D numpy array with (J+1)*X.shape[1] columns, the first J columns being the J wavelet coefficients and the last
-               column being the level J scaling coefficient corresponding to the first feature in X, the next J columns
-               being the J wavelet coefficients and the column after that being the scaling coefficient corresponding to the second
-               feature in X, and so on. If X was given as a pandas data frame, the output will be a pandas data frame.
+            First element is a 2D numpy array with (J+1)*X.shape[1] columns, the first J columns being the J wavelet coefficients and the last
+            column being the level J scaling coefficient corresponding to the first feature in X, the next J columns
+            being the J wavelet coefficients and the column after that being the scaling coefficient corresponding to the second
+            feature in X, and so on. If X was given as a pandas data frame, the output will be a pandas data frame.
 
-               Second element is a 1D array corresponding to the target y provided by the user (with boundary
-               coefficient elements removed if remove_bc = True.) If X was given as a pandas data frame, the output will be a 
-               pandas series with name "y".
+            Second element is a 1D array corresponding to the target y provided by the user (with boundary
+            coefficient elements removed if remove_bc = True.) If X was given as a pandas data frame, the output will be a 
+            pandas series with name "y".
 
         if y is not provided:
+            Return type is np.ndarray or pandas DataFrame.
         
-        np.ndarray or pandas DataFrame: A 2D numpy array with (J+1)*X.shape[1] columns, the first J columns being the J wavelet coefficients and the last
-                                        column being the level J scaling coefficient corresponding to the first feature in X, the next J columns
-                                        being the J wavelet coefficients and the column after that being the scaling coefficient corresponding to the second
-                                        feature in X, and so on. If X was given as a pandas data frame, the output will be a pandas data frame.
+            A 2D numpy array with (J+1)*X.shape[1] columns, the first J columns being the J wavelet coefficients and the last
+            column being the level J scaling coefficient corresponding to the first feature in X, the next J columns
+            being the J wavelet coefficients and the column after that being the scaling coefficient corresponding to the second
+            feature in X, and so on. If X was given as a pandas data frame, the output will be a pandas data frame.
     '''
     
     # -----------------

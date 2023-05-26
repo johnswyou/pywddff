@@ -16,16 +16,18 @@ def scaling_coefs(x, filter, j, remove_bc = True, **kwargs):
         remove_bc (bool): Whether boundary coefficients should be removed. If True, boundary coefficients are
                           removed. If False, boundary coefficients are not removed.
         **kwargs: Used to specify max_L, max_J for cutting off boundary coefficients.
-        max_L (int): This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
+        max_L (int): It is unlikely that this argument will be needed by most users.
+                     This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
                      filter, L. When removing boundary coefficients, in the case that a user wants to use a max_L in ((2^max_J)-1)*(max_L - 1) 
                      that does not equal L, the user can specify a value for max_L that is greater than L. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
-        max_J (int): This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
+                     that are removed across the different configurations.
+        max_J (int): It is unlikely that this argument will be needed by most users.
+                     This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
                      When removing boundary coefficients, in the case that a user wants to use a max_J in ((2^max_J)-1)*(max_L - 1) that does not equal J, 
                      the user can specify a value for max_J that is greater than J. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
+                     that are removed across the different configurations.
 
     Returns:
         np.ndarray: A 1D numpy array.
@@ -58,16 +60,18 @@ def wavelet_coefs(x, filter, j, remove_bc = True, **kwargs):
         remove_bc (bool): Whether boundary coefficients should be removed. If True, boundary coefficients are
                           removed. If False, boundary coefficients are not removed.
         **kwargs: Used to specify max_L, max_J for cutting off boundary coefficients.
-        max_L (int): This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
+        max_L (int): It is unlikely that this argument will be needed by most users.
+                     This argument is used only when remove_bc = True. When max_L = None (and remove_bc = True), max_L is set equal to the length of the chosen
                      filter, L. When removing boundary coefficients, in the case that a user wants to use a max_L in ((2^max_J)-1)*(max_L - 1) 
                      that does not equal L, the user can specify a value for max_L that is greater than L. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
-        max_J (int): This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
+                     that are removed across the different configurations.
+        max_J (int): It is unlikely that this argument will be needed by most users.
+                     This argument is used only when remove_bc = True. When max_J = None (and remove_bc = True), max_J is set equal to J.
                      When removing boundary coefficients, in the case that a user wants to use a max_J in ((2^max_J)-1)*(max_L - 1) that does not equal J, 
                      the user can specify a value for max_J that is greater than J. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
+                     that are removed across the different configurations.
 
     Returns:
         np.ndarray: A 1D numpy array.
@@ -102,16 +106,18 @@ def n_boundary_coefs(filter, j, max_L=None, max_J=None):
         filter (str): A string indicating the desired filter. There are 128 options, see the README on
                       this package's github page to see the list of filters available.
         j (int): Decomposition level.
-        max_L (int): When max_L = None, max_L is set equal to the length of the chosen
+        max_L (int): It is unlikely that this argument will be needed by most users.
+                     When max_L = None, max_L is set equal to the length of the chosen
                      filter, L. When removing boundary coefficients, in the case that a user wants to use a max_L in ((2^max_J)-1)*(max_L - 1) 
                      that does not equal L, the user can specify a value for max_L that is greater than L. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
-        max_J (int): When max_J = None, max_J is set equal to J.
+                     that are removed across the different configurations.
+        max_J (int): It is unlikely that this argument will be needed by most users.
+                     When max_J = None, max_J is set equal to J.
                      When removing boundary coefficients, in the case that a user wants to use a max_J in ((2^max_J)-1)*(max_L - 1) that does not equal J, 
                      the user can specify a value for max_J that is greater than J. Doing this is useful when doing comparison studies
                      to compare different filter and decomposition level (J) combinations while controlling for the number boundary coefficients
-                     that are removed across the different configurations. It is unlikely that this argument will be needed by most users.
+                     that are removed across the different configurations.
     
     Returns:
         int: Number of boundary coefficients to be removed.
@@ -142,7 +148,8 @@ def make_output_names(n_inputs, j):
         j (int): Decomposition level.
 
     Returns:
-        list: A list containing column names for the post wavelet transform coefficients matrix.
+        list: 
+              A list containing column names for the post wavelet transform coefficients matrix.
               It is a list of strings.
     """
     orig_input_names = ["X" + str(i) for i in range(1, n_inputs+1)]
@@ -161,7 +168,8 @@ def make_output_names_from_df(X, j):
         j (int): Decomposition level.
 
     Returns:
-        list: A list containing column names for the post wavelet transform coefficients matrix.
+        list: 
+              A list containing column names for the post wavelet transform coefficients matrix.
               It is a list of strings.
     """
     assert isinstance(X, pd.DataFrame)
@@ -182,7 +190,8 @@ def make_output_names_from_list(orig_input_names, j):
         j (int): Decomposition level.
 
     Returns:
-        list: A list containing column names for the post wavelet transform coefficients matrix.
+        list: 
+              A list containing column names for the post wavelet transform coefficients matrix.
               It is a list of strings.
     """
     assert isinstance(orig_input_names, list)
