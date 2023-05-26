@@ -1,3 +1,5 @@
+![banner](docs/_static/pywddff_banner.png)
+
 # pywddff
 
 Python package to perform feature engineering using wavelet transforms, geared towards those who work with tabular data and machine learning models to forecast time series.
@@ -7,10 +9,6 @@ Python package to perform feature engineering using wavelet transforms, geared t
 ```bash
 $ pip install pywddff
 ```
-
-## Usage
-
-- TODO
 
 ## Contributing
 

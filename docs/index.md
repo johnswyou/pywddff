@@ -1,3 +1,5 @@
+![banner](_static/pywddff_banner.png)
+
 ```{include} ../README.md
 ```
 
