@@ -11,6 +11,10 @@
 
 Python package to perform feature engineering using wavelet transforms, geared towards those who work with tabular data and machine learning models to forecast time series.
 
+## Documentation
+
+You can find the documentation for `pywddff` including API references [here](https://pywddff.readthedocs.io/en/latest/).
+
 ## About the name
 
 `pywddff` stands for "Python Wavelet Data Driven Forecasting Framework". WDDFF is an approach to combining wavelet transform generated features and machine learning for forecasting time series. The WDDFF paper can be found [here](https://www.sciencedirect.com/science/article/abs/pii/S0022169418303317).
