@@ -11,6 +11,10 @@
 
 Python package to perform feature engineering using wavelet transforms, geared towards those who work with tabular data and machine learning models to forecast time series.
 
+## About the name
+
+`pywddff` stands for "Python Wavelet Data Driven Forecasting Framework". WDDFF is an approach to combining wavelet transform generated features and machine learning for forecasting time series. The WDDFF paper can be found [here](https://www.sciencedirect.com/science/article/abs/pii/S0022169418303317).
+
 ## Installation
 
 This package is not yet listed on the Python Package Index (PyPI). You can use `poetry install` to install `pywddff` by first cloning this repository and then running `poetry install` from the root directory. Please note that you must have `poetry` already installed and available from your terminal. See [here](https://python-poetry.org/docs/master/) for instructions on installing `poetry` on your system.
