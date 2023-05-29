@@ -1,4 +1,10 @@
-![banner](docs/_static/banner-light.png)
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/johnswyou/pywddff/blob/6f6598fa55513b7a94974c82bb451a41c9532cbc/docs/_static/banner-dark.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://github.com/johnswyou/pywddff/blob/6f6598fa55513b7a94974c82bb451a41c9532cbc/docs/_static/banner-light.png">
+      <img alt="Shows a black logo in light color mode and a white one in dark color mode." src="https://github.com/johnswyou/pywddff/blob/6f6598fa55513b7a94974c82bb451a41c9532cbc/docs/_static/banner-light.png">
+    </picture>
+</p>
 
 <!-- start here -->
 
