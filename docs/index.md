@@ -1,6 +1,7 @@
-![banner](_static/pywddff_banner.png)
-
+![banner](_static/banner.png)
 ```{include} ../README.md
+:start-after: <!-- start here -->
+:end-before: <!-- end here -->
 ```
 
 ```{toctree}

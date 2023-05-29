@@ -1,4 +1,6 @@
-![banner](docs/_static/pywddff_banner.png)
+![banner](docs/_static/banner.png)
+
+<!-- start here -->
 
 # pywddff
 
@@ -21,3 +23,5 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 ## Credits
 
 `pywddff` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
+
+<!-- end here -->
