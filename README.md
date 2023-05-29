@@ -1,4 +1,4 @@
-![banner](docs/_static/banner.png)
+![banner](docs/_static/banner-light.png)
 
 <!-- start here -->
 

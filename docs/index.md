@@ -1,4 +1,4 @@
-![banner](_static/banner.png)
+![banner](_static/banner-light.png)
 ```{include} ../README.md
 :start-after: <!-- start here -->
 :end-before: <!-- end here -->
