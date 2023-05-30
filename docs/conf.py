@@ -20,6 +20,7 @@ extensions = [
     "autoapi.extension",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
+    'nbsphinx',
 ]
 autoapi_dirs = ["../src"]
 
@@ -34,3 +35,8 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
+
+# -- John's customizations ---------------------------------------------------
+
+jupyter_execute_notebooks = "auto"
+execution_timeout = 600  # Or use -1 for no timeout
