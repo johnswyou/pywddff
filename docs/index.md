@@ -12,6 +12,5 @@ example.ipynb
 example-1.ipynb
 changelog.md
 contributing.md
-conduct.md
 autoapi/index
 ```
