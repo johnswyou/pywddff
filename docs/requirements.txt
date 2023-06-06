@@ -4,3 +4,4 @@ sphinx-rtd-theme
 ipykernel
 nbsphinx
 matplotlib
+seaborn
