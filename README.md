@@ -29,6 +29,12 @@ $ cd pywddff
 $ poetry install
 ```
 
+Update (June 6, 2023): You can now pip install
+
+```bash
+$ pip install pywddff
+```
+
 ## Available wavelet/scaling filters
 
 `pywddff` gives access to 128 (decomposition level 1) wavelet (high pass) and scaling (low pass) filters.
